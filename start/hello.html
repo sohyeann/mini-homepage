@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>간단한 게시판</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    
+    #post-form {
+      margin-bottom: 20px;
+    }
+    
+    #post-list {
+      list-style-type: none;
+      padding: 0;
+    }
+    
+    .post {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+    
+    .post:hover {
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+  <h1>간단한 게시판</h1>
+  
+  <form id="post-form">
+    <label for="post-title">제목:</label>
+    <input type="text" id="post-title">
+    <br>
+    <label for="post-content">내용:</label>
+    <textarea id="post-content"></textarea>
+    <br>
+    <button type="submit">글 작성</button>
+  </form>
+  
+  <ul id="post-list"></ul>
+  
+  <div id="post-detail" style="display: none;"></div>
+  
+  <script>
+    // 글 작성 이벤트 처리
+    document.getElementById('post-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      var title = document.getElementById('post-title').value;
+      var content = document.getElementById('post-content').value;
+      
+      if (title && content) {
+        var post = {
+          title: title,
+          content: content
+        };
+        
+        // 로컬 스토리지에 글 저장
+        var posts = localStorage.getItem('posts');
+        if (posts) {
+          posts = JSON.parse(posts);
+        } else {
+          posts = [];
+        }
+        
+        posts.push(post);
+        localStorage.setItem('posts', JSON.stringify(posts));
+        
+        // 글 목록 갱신
+        showPostList();
+        
+        // 입력 필드 초기화
+        document.getElementById('post-title').value = '';
+        document.getElementById('post-content').value = '';
+      }
+    });
+    
+    // 글 목록 표시
+    function showPostList() {
+      var postList = document.getElementById('post-list');
+      postList.innerHTML = '';
+      
+      var posts = localStorage.getItem('posts');
+      if (posts) {
+        posts = JSON.parse(posts);
+        
+        for (var i = 0; i < posts.length; i++) {
+          var post = posts[i];
+          var li = document.createElement('li');
+          li.classList.add('post');
+          li.textContent = post.title;
+          li.setAttribute('data-index', i);
+          
+          li.addEventListener('click', function() {
+            var index = this.getAttribute('data-index');
+            showPostDetail(index);
+          });
+          
+          postList.appendChild(li);
+        }
+      }
+    }
+    
+    // 글 상세 내용 표시
+    function showPostDetail(index) {
+      var posts = localStorage.getItem('posts');
+      if (posts) {
+        posts = JSON.parse(posts);
+        var post = posts[index];
+        
+        var postDetail = document.getElementById('post-detail');
+        postDetail.style.display = 'block';
+        postDetail.innerHTML = '<h2>' + post.title + '</h2>' + '<p>' + post.content + '</p>';
+      }
+    }
+    
+    // 초기화: 글 목록 표시
+    showPostList();
+  </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <title>1일차 - html 태그 활용</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <h1>WEB 개발. 1일차</h1>
+        <h2>5가지 이상의 html 태그 활용하기!</h2>
+
+        <div style="background-color: #eeeeee">
+            <div style="display: inline-block; padding: 20px">홈</div>  <!--inline-block으로 설정하면 줄바꿈 없이 순서대로 표시 가능-->
+            <div style="display: inline-block; padding: 20px">코뮤니티로가기</div>
+            <div style="display: inline-block; padding: 20px">네비게이션</div>
+        </div>
+
+        <div style="background-color: royalblue">
+            <div style="display: inline-block; margin: 20px">홈</div>
+            <div style="display: inline-block; margin: 20px">코뮤니티로가기</div>
+            <div style="display: inline-block; margin: 20px">네비게이션</div>
+        </div>
+
+        <!--padding: 10px; ▶ 상하좌우 패딩을 10px로 지정  px는 절댓값
+        padding-left: 10px ▶ 왼쪽 패딩을 10px로 지정
+        padding-right: 10px ▶ 오른쪽 패딩을 10px로 지정
+        padding-top: 10px ▶ 위쪽 패딩을 10px로 지정
+        padding-bottom: 10px ▶ 아래쪽 패딩을 10px로 지정-->
+
+        <!--padding: 3px 10px ▶ 상하 = 3px, 좌우 = 10px로 설정
+        padding: 5px 10px 3px ▶ 위쪽 = 5px, 좌우 = 10px, 아래쪽 = 3px으로 설정
+        padding: 5px 10px 7px 3px ▶ 위쪽 = 5px, 오른쪽 = 10px, 아래쪽 = 7px, 왼쪽 = 3px으로 설정-->
+        
+        <p>아래의 사이트는 다양한 html 태그를 모아 볼 수 있는 사이트입니다.</p>
+        <span>사이트 접속하기 -> </span> <!--span이 뭐려나-->
+        <a href="https://www.w3schools.com/html/">HTML Tutorial</a>//Hypertext Reference
+
+
+        <ul> ul 태그 : unordered list (순서가 필요없는 목록)
+            <li>이렇게 순서가 필요없는 목록의 리스트는</li>
+            <li>왼쪽에 점으로 표시됩니다!</li>
+        </ul>
+        
+        <ol> ol 태그 : ordered list (순서가 있는 목록)
+            <li>순서가 있는 목록의 리스트는</li>
+            <li>왼쪽처럼 숫자가 표시되며,</li>
+            <li>리스트가 늘어나면 숫자도 늘어납니다!</li>
+        </ol>
+
+
+        <p>
+            ※위의 ul 태그와 ol 태그는 모두 리스트를 나타낼 때 li 태그를 사용하며,<br>
+            li는 list item의 약자입니다!
+        </p>
+
+        <img src="web 메이트 심화편.PNG"> <!--저번 강의부터 사진이 안보이는데 이유가 뭘까?-->
+    </body>
+</html>
